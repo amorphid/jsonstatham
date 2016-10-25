@@ -1,0 +1,2 @@
+defmodule JSONStatham do
+end
