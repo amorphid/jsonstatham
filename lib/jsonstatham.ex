@@ -12,4 +12,8 @@ defmodule JSONStatham do
       :end_of_string -> {:error, :only_whitespace}
     end
   end
+
+  def parse(_) do
+    {:error, :not_string}
+  end
 end
