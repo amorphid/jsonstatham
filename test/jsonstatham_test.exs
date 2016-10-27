@@ -1,5 +1,5 @@
 defmodule JSONStathamTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   describe "empty string" do
     test "returns error" do
