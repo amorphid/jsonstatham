@@ -6,24 +6,22 @@ defmodule JSONStatham.LeadingWhitespaceParserTest do
   describe "only whitespace" do
     test "throws error" do
       blank = "\t\n\r \t\n\r \t\n\r "
-      error = {:error, :blank}
-      assert catch_throw(@parser.parse(blank)) == error
+      assert catch_throw(@parser.parse(blank)) == {:error, :blank}
     end
   end
 
   describe "leading whitespace" do
     test "is trimmed" do
-      untrimmed = "\t\n\r hello world"
-      trimmed   = {:end_of_whitespace, "hello world"}
-      assert @parser.parse(untrimmed) == trimmed
+      trimmed   = "hello world"
+      untrimmed = "\t\n\r " <> "hello world"
+      assert @parser.parse(untrimmed) == {:ok, trimmed}
     end
   end
 
   describe "no leading whitespace" do
     test "returns tuple" do
       string  = "hello world"
-      tuple   = {:end_of_whitespace, string}
-      assert @parser.parse(string) == tuple
+      assert @parser.parse(string) == {:ok, string}
     end
   end
 end

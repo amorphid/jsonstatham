@@ -3,11 +3,12 @@ defmodule JSONStatham do
   A JSON parser written in pure Elixir
   """
 
-  def parse(str) when is_binary(str) do
+  def parse(raw) when is_binary(raw) do
     try do
-      JSONStatham.LeadingWhitespaceParser.parse(str)
-      |> JSONStatham.ValueParser.parse()
-      # TODO |> JSONStatham.TrailingWhitespaceParser.parse()
+      {:ok, pre}          = JSONStatham.LeadingWhitespaceParser.parse(raw)
+      {:ok, parsed, post} = JSONStatham.ValueParser.parse(pre)
+      :ok                 = JSONStatham.TrailingWhitespaceParser.parse(post)
+      parsed
     catch {:error, _reason} = err ->
       err
     end

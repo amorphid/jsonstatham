@@ -3,6 +3,16 @@ defmodule JSONStathamTest do
 
   @parser JSONStatham
 
+  def read(name) do
+    File.read!("test/support/raw_json/#{name}.json")
+  end
+
+  describe "true" do
+    test "returns true" do
+      assert @parser.parse(read("true")) == true
+    end
+  end
+
   describe "invalid type" do
     test "returns error" do
       error = {:error, :invalid_type}
