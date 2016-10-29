@@ -20,13 +20,13 @@ defmodule JSONStatham.FalseParserTest do
 
   describe "starts w/ f, not false, & length less than 5" do
     test "throws error" do
-      assert catch_throw(@parser.parse("he", [102])) == {:error, :not_false}
+      assert catch_throw(@parser.parse("lea", [102])) == {:error, :not_false}
     end
   end
 
   describe "starts w/ f, not false, & length 5+" do
     test "throws error" do
-      assert catch_throw(@parser.parse("ree", [102])) == {:error, :not_false}
+      assert catch_throw(@parser.parse("loor", [102])) == {:error, :not_false}
     end
   end
 end

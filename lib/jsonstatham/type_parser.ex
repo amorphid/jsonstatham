@@ -4,6 +4,11 @@ defmodule JSONStatham.TypeParser do
     {:ok, JSONStatham.FalseParser}
   end
 
+  # 110 is ASCII val for "n"
+  def parse(type) when type == 110 do
+    {:ok, JSONStatham.NullParser}
+  end
+
   # 116 is ASCII val for "t"
   def parse(type) when type == 116 do
     {:ok, JSONStatham.TrueParser}

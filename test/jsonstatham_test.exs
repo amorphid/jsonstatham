@@ -21,6 +21,12 @@ defmodule JSONStathamTest do
     end
   end
 
+  describe "null" do
+    test "returns nil" do
+      assert @parser.parse(read("null")) == nil
+    end
+  end
+
   describe "invalid type" do
     test "returns error" do
       error = {:error, :not_string}
