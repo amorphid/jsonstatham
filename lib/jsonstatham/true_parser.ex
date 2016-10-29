@@ -1,6 +1,10 @@
 defmodule JSONStatham.TrueParser do
-  # [101, 117, 114, 116] are reversed ASCII values for true
-  def parse(str, [101, 117, 114, 116] = _acc) do
+  @moduledoc """
+  Parses `"true"`
+  """
+
+  # 'eurt' is reverse of 'true'
+  def parse(str, 'eurt' = _acc) do
     {:ok, true, str}
   end
 

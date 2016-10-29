@@ -1,6 +1,10 @@
 defmodule JSONStatham.FalseParser do
-  # [101, 115, 108, 97, 102] are reversed ASCII values for false
-  def parse(str, [101, 115, 108, 97, 102] = _acc) do
+  @moduledoc """
+  Parses `"false"`
+  """
+
+  # 'eslaf' is 'false' reversed
+  def parse(str, 'eslaf' = _acc) do
     {:ok, false, str}
   end
 

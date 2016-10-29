@@ -10,6 +10,13 @@ defmodule JSONStatham.TypeParserTest do
     end
   end
 
+  describe "null" do
+    test "returns null parser" do
+      type = 110 # 102 is ASCII val for "n"
+      assert @parser.parse(type) == {:ok, JSONStatham.NullParser}
+    end
+  end
+
   describe "true" do
     test "returns true parser" do
       type = 116 # 116 is ASCII val for "t"

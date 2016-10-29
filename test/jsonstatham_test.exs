@@ -3,27 +3,21 @@ defmodule JSONStathamTest do
 
   @parser JSONStatham
 
-  def read(name) do
-    "test/support/raw_json/#{name}.json"
-    |> Path.absname()
-    |> File.read!()
-  end
-
   describe "true" do
     test "returns true" do
-      assert @parser.parse(read("true")) == true
+      assert @parser.parse("true") == true
     end
   end
 
   describe "false" do
     test "returns false" do
-      assert @parser.parse(read("false")) == false
+      assert @parser.parse("false") == false
     end
   end
 
   describe "null" do
     test "returns nil" do
-      assert @parser.parse(read("null")) == nil
+      assert @parser.parse("null") == nil
     end
   end
 

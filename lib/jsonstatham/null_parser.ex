@@ -1,6 +1,10 @@
 defmodule JSONStatham.NullParser do
-  # [108, 108, 117, 110] are reversed ASCII values for null
-  def parse(str, [108, 108, 117, 110] = _acc) do
+  @moduledoc """
+  Parses `"null"`
+  """
+
+  # 'llun' is reverse of 'null'
+  def parse(str, 'llun' = _acc) do
     {:ok, nil, str}
   end
 

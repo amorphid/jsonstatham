@@ -1,15 +1,19 @@
 defmodule JSONStatham.TypeParser do
-  # 102 is ASCII val for "f"
+  @moduledoc """
+  Parses a type character and returns appropriate parser
+  """
+
+  # 102 is Unicode val for "f"
   def parse(type) when type == 102 do
     {:ok, JSONStatham.FalseParser}
   end
 
-  # 110 is ASCII val for "n"
+  # 110 is Unicode val for "n"
   def parse(type) when type == 110 do
     {:ok, JSONStatham.NullParser}
   end
 
-  # 116 is ASCII val for "t"
+  # 116 is Unicode val for "t"
   def parse(type) when type == 116 do
     {:ok, JSONStatham.TrueParser}
   end
