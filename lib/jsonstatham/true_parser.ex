@@ -11,11 +11,11 @@ defmodule JSONStatham.TrueParser do
 
   # string empty before acc hits length of 4
   def parse("", _acc) do
-    throw {:error, :invalid_json}
+    throw {:error, :not_true}
   end
 
   # [_,_,_,_] are not reversed ASCII values for true
   def parse(_str, [_,_,_,_]=_acc) do
-    throw {:error, :invalid_json}
+    throw {:error, :not_true}
   end
 end

@@ -3,18 +3,18 @@ defmodule JSONStatham.ValueParserTest do
 
   @parser JSONStatham.ValueParser
 
-  describe "true" do
-    test "returns true and trailing string" do
+  describe "parsing valid json" do
+    test "returns value and trailing string" do
       trailing = "},{a: null}  "
       string   = "true" <> trailing
-      assert @parser.parse(string) == {:ok, true, trailing}
+      assert {:ok, _, ^trailing} = @parser.parse(string)
     end
   end
 
-  describe "invalid json" do
+  describe "invalid value" do
     test "throws an error" do
-      error = {:error, :invalid_json}
-      assert catch_throw(@parser.parse("invalid json")) == error
+      error = {:error, :invalid_value}
+      assert catch_throw(@parser.parse(:not_string)) == error
     end
   end
 end

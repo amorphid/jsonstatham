@@ -19,7 +19,7 @@ defmodule JSONStatham.TrailingWhitespaceParserTest do
   describe "non whitespace" do
     test "throws error" do
       str  = "{a: 123}"
-      assert catch_throw(@parser.parse(str)) == {:error, :invalid_json}
+      assert catch_throw(@parser.parse(str)) == {:error, :multiple_values}
     end
   end
 end

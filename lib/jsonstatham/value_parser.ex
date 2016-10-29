@@ -3,12 +3,12 @@ defmodule JSONStatham.ValueParser do
   Parses JSON values
   """
 
-  # 116 is ASCII val for "t"
-  def parse(<<h::utf8,t::binary>>) when h == 116 do
-    {:ok, true, _} = JSONStatham.TrueParser.parse(t, [h])
+  def parse(<<h::utf8,t::binary>>) do
+    {:ok, parser}      = JSONStatham.TypeParser.parse(h)
+    {:ok, _, _} = parser.parse(t, [h])
   end
 
   def parse(_) do
-    throw {:error, :invalid_json}
+    throw {:error, :invalid_value}
   end
 end

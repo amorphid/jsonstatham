@@ -20,13 +20,13 @@ defmodule JSONStatham.TrueParserTest do
 
   describe "starts w/ t, not true, & length less than 4" do
     test "throws error" do
-      assert catch_throw(@parser.parse("he", [116])) == {:error, :invalid_json}
+      assert catch_throw(@parser.parse("he", [116])) == {:error, :not_true}
     end
   end
 
   describe "starts w/ t, not true, & length 4+" do
     test "throws error" do
-      assert catch_throw(@parser.parse("ree", [116])) == {:error, :invalid_json}
+      assert catch_throw(@parser.parse("ree", [116])) == {:error, :not_true}
     end
   end
 end

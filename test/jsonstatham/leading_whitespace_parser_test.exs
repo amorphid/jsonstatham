@@ -6,7 +6,7 @@ defmodule JSONStatham.LeadingWhitespaceParserTest do
   describe "only whitespace" do
     test "throws error" do
       blank = "\t\n\r \t\n\r \t\n\r "
-      assert catch_throw(@parser.parse(blank)) == {:error, :blank}
+      assert catch_throw(@parser.parse(blank)) == {:error, :only_whitespace}
     end
   end
 

@@ -15,6 +15,6 @@ defmodule JSONStatham do
   end
 
   def parse(_) do
-    {:error, :invalid_type}
+    {:error, :not_string}
   end
 end

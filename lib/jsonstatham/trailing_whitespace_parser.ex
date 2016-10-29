@@ -6,7 +6,7 @@ defmodule JSONStatham.TrailingWhitespaceParser do
   def parse(str) do
     case JSONStatham.WhitespaceParser.parse(str) do
       :end_of_whitespace      -> :ok
-      {:end_of_whitespace, _} -> throw {:error, :invalid_json}
+      {:end_of_whitespace, _} -> throw {:error, :multiple_values}
     end
   end
 end
