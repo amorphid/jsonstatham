@@ -5,28 +5,37 @@ defmodule JSONStatham.TrueParserTest do
 
   describe "true w/ no trailing text" do
     test "returns true & empty string" do
-      str  = "rue"
-      assert @parser.parse(str, [116]) == {:ok, true, ""}
+      str  = "true"
+      assert @parser.parse(str) == {:ok, true, ""}
     end
   end
 
   describe "true with trailing text w/ length of 4+" do
     test "returns true & text" do
       text = ", 2, 3, 4, 5]"
-      str  = "rue" <> text
-      assert @parser.parse(str, [116]) == {:ok, true, text}
+      str  = "true" <> text
+      assert @parser.parse(str) == {:ok, true, text}
     end
   end
 
   describe "starts w/ t, not true, & length less than 4" do
     test "throws error" do
-      assert catch_throw(@parser.parse("he", [116])) == {:error, :not_true}
+      str = "the"
+      assert catch_throw(@parser.parse(str)) == {:error, :not_true}
+    end
+  end
+
+  describe "starts w/ t, not true, & length 4" do
+    test "throws error" do
+      str = "tree"
+      assert catch_throw(@parser.parse(str)) == {:error, :not_true}
     end
   end
 
   describe "starts w/ t, not true, & length 4+" do
     test "throws error" do
-      assert catch_throw(@parser.parse("ree", [116])) == {:error, :not_true}
+      str = "truth"
+      assert catch_throw(@parser.parse(str)) == {:error, :not_true}
     end
   end
 end
